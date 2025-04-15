@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+// Colors
+$black: rgb(45, 45, 45);
+$white: rgb(255, 255, 255);
+
+$color_secundary: rgb(255, 159, 75);
+$color_primary: rgb(0, 194, 200);
+
+// Fonts
+$font_baloo: "Baloo 2", cursive;
+$font_roboto: "Roboto", sans-serif;
+
+html {
+  font-family: $font_baloo !important;
+  color: $black !important;
+  height: 100vh;
+}
+
+body {
+  background-color: $black;
+
+  // Texture 
+  background-size: 20px 40px;
+  background-image: repeating-linear-gradient(
+    0deg,
+    #444cf7,
+    #444cf7 1px,
+    #e5e5f7 1px,
+    #e5e5f7
+  );
+}
+
+* {
+  font-family: inherit !important ;
+  margin: 0;
+}
+
+button,
+input {
+  font-weight: bold;
+
+  border: none;
+  border-radius: 6pt;
+  padding: 15pt 10pt;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+.center_h_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 20vh);
+}
+
+.input_block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
