@@ -2,48 +2,48 @@
 
 // Colors
 $black: rgb(45, 45, 45);
-$white: rgb(255, 255, 255);
+$white: whitesmoke;
 
-$color_secundary: rgb(255, 159, 75);
-$color_primary: rgb(0, 194, 200);
+$color_primary: rgb(28, 28, 28);
+$color_secundary: rgb(20, 20, 41);
+$card_color: rgb(20, 30, 33);
 
 // Fonts
 $font_baloo: "Baloo 2", cursive;
 $font_roboto: "Roboto", sans-serif;
 
 html {
-  font-family: $font_baloo !important;
+  font-family: $font_roboto !important;
   color: $black !important;
   height: 100vh;
 }
 
 body {
-  background-color: $black;
-
-  // Texture 
-  background-size: 20px 40px;
-  background-image: repeating-linear-gradient(
-    0deg,
-    #444cf7,
-    #444cf7 1px,
-    #e5e5f7 1px,
-    #e5e5f7
-  );
+  background-color: $color_primary;
+  color: $white;
 }
 
 * {
   font-family: inherit !important ;
   margin: 0;
+  color: $white;
 }
 
 button,
 input {
   font-weight: bold;
 
-  border: none;
+  border: 1px solid $white;
   border-radius: 6pt;
   padding: 15pt 10pt;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+button {
+  color: $white !important;
+}
+
+input {
+  color: $black !important;
 }
 
 .center_h_container {

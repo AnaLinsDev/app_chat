@@ -3,15 +3,18 @@ import { ChannelContextProvider } from "./context/ChannelContext";
 import "./globals.scss";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Login } from "./screens/login";
-import { Chat } from "./screens/chat";
-import { ChannelCreate } from "./screens/channelCreate";
-import { ChannelList } from "./screens/channelList";
+import { Chat } from "./screens/Chat";
+import { ChannelCreate } from "./screens/ChannelCreate";
+import { ChannelList } from "./screens/ChannelList";
 
-export default function RootLayout({
+/*
+RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>)
+*/
+export default function RootLayout() {
   return (
     <ChannelContextProvider>
       <BrowserRouter>

@@ -9,7 +9,7 @@
   background-color: vars.$color_primary;
   color: vars.$black;
   margin-top: 2rem;
-  width: 21.6rem;
+  width: 14rem;
   font-size: 1rem;
 }
 
@@ -29,9 +29,8 @@
   max-width: 400px;
   background-color: vars.$color_secundary;
   padding: 2rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-
-  border-top: 50pt solid rgb(157, 81, 0) !important;
+  border-radius: 10pt;
+  border: 1pt solid vars.$white;
 
   font-family: monospace;
   line-height: 1.6; 
