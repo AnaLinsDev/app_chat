@@ -8,9 +8,11 @@ export const ChannelList = () => {
   return (
     <div id="channel_list">
       {channels.map((channel) => (
-        <div key={channel.id} id="channel_list_option">
-          <Link to={`channel/${channel.id}`}>{channel.name}</Link>
-        </div>
+        <Link key={channel.id} to={`/chat/${channel.id}`}>
+          <div id="channel_list_option">
+            {channel.name}
+          </div>
+        </Link>
       ))}
     </div>
   );

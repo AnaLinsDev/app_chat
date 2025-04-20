@@ -11,6 +11,10 @@
   margin-top: 2rem;
   width: 14rem;
   font-size: 1rem;
+
+  &:hover {
+    background-color: vars.$color_primary_hover;
+  }
 }
 
 #signin_form {
@@ -33,6 +37,6 @@
   border: 1pt solid vars.$white;
 
   font-family: monospace;
-  line-height: 1.6; 
-  position: relative; 
+  line-height: 1.6;
+  position: relative;
 }

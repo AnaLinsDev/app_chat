@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./login.scss";
+import "./Login.scss";
 import { useChannelContext } from "../hooks/useChannelContext";
 import { useNavigate } from "react-router-dom";
 

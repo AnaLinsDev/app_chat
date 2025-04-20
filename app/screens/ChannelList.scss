@@ -15,19 +15,19 @@
   padding: 15pt 25pt;
   width: 150pt;
   margin: 1rem;
+  color: vars.$black;
 
   overflow: hidden;
 
   border-collapse: collapse;
-  border: 0.5pt solid vars.$white;
+  border: 2pt solid vars.$white;
   border-radius: 10pt;
-  background-color: vars.$card_color;
+  background-color: vars.$color_secundary;
 
   &:hover {
     opacity: 0.95;
     min-width: 150pt;
-    background-color: vars.$color_secundary;
-    border: 0.5pt solid vars.$black;
+    background-color: vars.$color_secundary_hover;
     width: auto !important;
     cursor: pointer;
   }

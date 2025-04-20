@@ -1,10 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useChannelContext } from "../hooks/useChannelContext";
 import "./ChannelCreate.scss";
+import { useNavigate } from "react-router-dom";
 
 export const ChannelCreate = () => {
   const [channelName, setChannelName] = useState("");
-  const { createChannel } = useChannelContext();
+  const { createChannel, userName } = useChannelContext();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!userName) {
+      navigate("/login");
+      return;
+    }
+  });
 
   return (
     <div id="channel_create">
@@ -12,6 +21,7 @@ export const ChannelCreate = () => {
         onSubmit={(ev) => {
           ev.preventDefault();
           createChannel(channelName);
+          setChannelName("");
         }}
       >
         <input
@@ -25,7 +35,7 @@ export const ChannelCreate = () => {
         />
 
         <button id="channel_create_btn" type="submit">
-          Create
+          Create Channel
         </button>
       </form>
     </div>

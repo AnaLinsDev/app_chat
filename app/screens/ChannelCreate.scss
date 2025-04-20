@@ -19,7 +19,11 @@
   background-color: vars.$color_primary;
   color: vars.$black;
   margin-top: 0.5rem;
-  width: 6rem;
+  width: 10rem;
   font-size: 1rem;
   margin-left: 1rem;
+
+  &:hover {
+    background-color: vars.$color_primary_hover;
+  }
 }

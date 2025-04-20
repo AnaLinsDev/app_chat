@@ -2,7 +2,7 @@
 import { ChannelContextProvider } from "./context/ChannelContext";
 import "./globals.scss";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Login } from "./screens/login";
+import { Login } from "./screens/Login";
 import { Chat } from "./screens/Chat";
 import { ChannelCreate } from "./screens/ChannelCreate";
 import { ChannelList } from "./screens/ChannelList";
