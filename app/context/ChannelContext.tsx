@@ -1,5 +1,5 @@
-import { createContext, useEffect, useRef, useState } from "react";
-import { io, Socket } from "socket.io-client";
+import { createContext, useEffect, useState } from "react";
+import { getChannelsAPI, createChannelAPI, joinChannelWS } from "../api/modules/channel";
 
 interface IMessage {
   userName: string;
@@ -8,7 +8,7 @@ interface IMessage {
 
 export interface IChannel {
   name: string;
-  id: number;
+  private: boolean;
   messages: IMessage[];
 }
 
@@ -17,10 +17,13 @@ interface IChannelContext {
   channel: IChannel | undefined;
   userName: string;
 
+  updateChannels: () => void;
+
   createChannel: (name: string) => void;
   createMessage: (message: string) => void;
-  login: (userName: string) => void;
-  joinChannel: (channelId: string) => void;
+  selectChannel: (channelName: string) => void;
+
+  joinChannel: (userName: string) => void;
 }
 
 export const ChannelContext = createContext<IChannelContext>(
@@ -32,52 +35,70 @@ export const ChannelContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const socket = useRef<Socket>(null);
   const [userName, setuserName] = useState("");
   const [channels, setChannels] = useState<IChannel[]>([]);
   const [channel, setChannel] = useState<IChannel>();
 
   useEffect(() => {
-    socket.current = io("http://localhost:3333");
+    updateChannels();
+  }, []);
 
-    socket.current?.on("channels:get", (data) => {
+  const updateChannels = () => {
+    getChannelsAPI().then((resp) => {
+      const data = resp.data;
       const data_reverse = data.reverse();
       setChannels(data_reverse);
     });
-
-    socket.current?.on("channel:get", (channel) => {
-      setChannel(channel);
-    });
-  }, []);
-
-  const login = (userName: string) => {
-    socket.current?.emit("user:login", userName);
-    setuserName(userName);
   };
 
   const createChannel = (channelName: string) => {
-    socket.current?.emit("channel:create", channelName);
+    createChannelAPI(channelName).then((resp) => {
+      const nameResp = resp.data.name;
+      const privateResp = resp.data.private;
+      const messagesResp: IMessage[] = [];
+
+      setChannel({
+        name: nameResp,
+        private: privateResp,
+        messages: messagesResp,
+      });
+
+      updateChannels();
+    });
   };
 
-  const joinChannel = (channelId: string) => {
-    socket.current?.emit("channel:join", channelId);
+  const selectChannel = (channelName: string) => {
+    const selectedChannel = channels.find(
+      (channel) => channel.name == channelName
+    );
+
+    setChannel(selectedChannel);
+  };
+
+  const joinChannel = (userName: string) => {
+
+    joinChannelWS(channel?.name, userName)
+    //socket.current?.emit("channel:join", channelId);
   };
 
   const createMessage = (message: string) => {
+    /*
     socket.current?.emit("message:create", {
       message,
       channelId: channel?.id,
       userName,
     });
+    */
   };
 
   return (
     <ChannelContext.Provider
       value={{
-        login,
+        updateChannels,
         createChannel,
         joinChannel,
         createMessage,
+        selectChannel,
         userName,
         channels,
         channel,

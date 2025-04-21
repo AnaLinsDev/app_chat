@@ -10,12 +10,12 @@
   margin: 30pt 0;
 }
 
-#channel_create_input {
+#channel_create_input, #channel_join_input_user {
   width: 16rem;
   color: vars.$black !important;
 }
 
-#channel_create_btn {
+#channel_create_btn, #channel_join_btn {
   background-color: vars.$color_primary;
   color: vars.$black;
   margin-top: 0.5rem;

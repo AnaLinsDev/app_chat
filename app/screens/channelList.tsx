@@ -1,18 +1,24 @@
-import { Link } from "react-router-dom";
 import { useChannelContext } from "../hooks/useChannelContext";
 import "./ChannelList.scss";
 
 export const ChannelList = () => {
-  const { channels } = useChannelContext();
+  const { channels, selectChannel, channel } = useChannelContext();
 
   return (
     <div id="channel_list">
-      {channels.map((channel) => (
-        <Link key={channel.id} to={`/chat/${channel.id}`}>
-          <div id="channel_list_option">
-            {channel.name}
-          </div>
-        </Link>
+      {channels.map((channelMap) => (
+        <div
+          key={channelMap.name}
+          id="channel_list_option"
+          className={channel?.name === channelMap.name ? "selected" : ""}
+          onClick={() => {
+            const sendName =
+              channel?.name == channelMap.name ? "" : channelMap.name;
+            selectChannel(sendName);
+          }}
+        >
+          {channelMap.name}
+        </div>
       ))}
     </div>
   );

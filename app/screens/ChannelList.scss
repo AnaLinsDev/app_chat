@@ -1,6 +1,5 @@
 @use "../globals.scss" as vars;
 
-
 #channel_list {
   display: flex;
   flex-direction: row;
@@ -23,6 +22,10 @@
   border: 2pt solid vars.$white;
   border-radius: 10pt;
   background-color: vars.$color_secundary;
+
+  &.selected {
+    background-color: vars.$color_secundary_selected;
+  }
 
   &:hover {
     opacity: 0.95;

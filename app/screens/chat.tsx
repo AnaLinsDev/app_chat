@@ -32,11 +32,6 @@ export const Chat = () => {
       return;
     }
 
-    if (!userName) {
-      //navigate("/login");
-      //return;
-    }
-
     joinChannel(channelId);
   }, []);
 
